@@ -33,9 +33,11 @@ script:
   - invoke unit
 
 jobs:
+  fast_finish: true
   include:
     - name: "Python 3.6 - Nautobot 1.0.X - ansible-base 2.10.X"
       python: 3.6
+      stage: integration
       env:
         - INVOKE_NAUTOBOT_ANSIBLE_PYTHON_VER=3.6
         - INVOKE_NAUTOBOT_ANSIBLE_NAUTOBOT_VER=1.0.3
@@ -43,6 +45,7 @@ jobs:
         - invoke integration
     - name: "Python 3.7 - Nautobot 1.1.X - Latest Ansible Core"
       python: 3.7
+      stage: integration
       env:
         - INVOKE_NAUTOBOT_ANSIBLE_PYTHON_VER=3.7
         - INVOKE_NAUTOBOT_ANSIBLE_NAUTOBOT_VER=1.1.1
